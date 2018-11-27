@@ -1,9 +1,10 @@
 import asyncio
-from init import login
+from init import login, connect
 
 async def main():
     try:
         client = await login()
+        await connect(client)
     except KeyboardInterrupt as err:
         print('\r\n\r\nExiting discord CUI client.')
 
@@ -14,4 +15,4 @@ if __name__ == '__main__':
         loop.run_until_complete(main())
         loop.close()
     except (RuntimeError, OSError) as err:
-        print('')
+        pass
